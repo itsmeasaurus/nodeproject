@@ -34,14 +34,15 @@ app.use(morgan('dev'))
 // Routes
 app.get('/', (req,res)=> {
     // res.sendFile('./views/index.html',{root:__dirname});
-    res.render('index',{
-        title : "Home Page",
-        blogs : [
-            {title : "Blog title one", description : "Blog description one", body : "Blog body one"},
-            {title : "Blog title two", description : "Blog description two", body : "Blog body two"},
-            {title : "Blog title three", description : "Blog description three", body : "Blog body three"},
-        ]
-    })
+
+    Blog.find()
+        .then((result) => {
+            res.render('index', {
+                title: 'Home Page',
+                blogs: result
+            })
+        })
+        .catch((err) => { console.log(err) })
 })
 
 app.get('/about', (req,res)=> {
@@ -68,6 +69,8 @@ app.get('/blog/create', (req,res) => {
     })
 })
 
+
+// Blog's backend api test
 app.get('/api/blogs/create', (req,res) => {
     const blog = new Blog({
         title: 'My new blog',
@@ -79,6 +82,7 @@ app.get('/api/blogs/create', (req,res) => {
         .then((result) => { res.send(result) })
         .catch((err) => { console.log(err) })
 })
+
 
 app.get('/api/blogs', (req,res) => {
     Blog.find()
