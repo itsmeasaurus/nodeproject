@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const Blog = require('./models/blog')
 
 const app = express()
 
@@ -65,6 +66,30 @@ app.get('/blog/create', (req,res) => {
     res.render('blog/create', {
         title : "Blog Create Page"
     })
+})
+
+app.get('/api/blogs/create', (req,res) => {
+    const blog = new Blog({
+        title: 'My new blog',
+        description: 'My new blog description is here',
+        body: 'Praesent nobis vulputate duis dicta, hymenaeos suspendisse ridiculus quam habitant viverra mauris, suspendisse, porta laudantium ultricies repudiandae tristique, vulputate cursus.'
+    })
+    
+    blog.save()
+        .then((result) => { res.send(result) })
+        .catch((err) => { console.log(err) })
+})
+
+app.get('/api/blogs', (req,res) => {
+    Blog.find()
+        .then((result) => { res.send(result)})
+        .catch((err) => { console.log(err) })
+})
+
+app.get('/api/blogs/single', (req,res) => {
+    Blog.findById('6624bdde12d0ba914d089c18')
+        .then((result) => { res.send(result)})
+        .catch((err) => { console.log(err) })
 })
 
 // 404 
