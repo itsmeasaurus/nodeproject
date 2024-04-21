@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<%- include('./partials/header.ejs') %>
+<body>
+    <header>
+        <h1><%= title %></h1>
+        <%- include('./partials/nav.ejs') %>
+    </header>
+
+    <section>
+        <h2>Blogs</h2>
+
+        <% if(blogs.length > 0) { %>
+            <% blogs.forEach(blog => { %>
+
+            <div class="blog-card">
+                <h3><%= blog.title %></h3>
+                <p><%= blog.description %></p>
+            </div>
+
+            <% }) %>
+        <% }else{ %>
+            <p>There is no blog</p>
+        <% } %>
+    </section>
+
+</body>
+</html>

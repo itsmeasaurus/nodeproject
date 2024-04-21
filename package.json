@@ -1,0 +1,25 @@
+{
+  "scripts": {
+    "dev": "npx nodemon server.js",
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "name": "nodetutorial-crash-course",
+  "version": "1.0.0",
+  "description": "Nothing special",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.3.2",
+    "morgan": "^1.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "liam",
+  "license": "ISC"
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<%- include('../partials/header.ejs') %>
+<body>
+
+    <header>
+        <h1>Node Tutorial</h1>
+        <%- include('../partials/nav.ejs') %>
+    </header>
+
+    <section>
+        <h2>Create Blog</h2>
+        <div>
+            <form action="">
+                <div>
+                    <label for="title">Blog Title</label>
+                    <input type="text" id="title" name="title">
+                </div>
+                <div>
+                    <label for="description">Blog Description</label>
+                    <input type="text" id="description" name="description">
+                </div>
+                <div>
+                    <label for="body">Blog Body</label>
+                    <textarea name="body" id="body" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <button type="submit">Create</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
