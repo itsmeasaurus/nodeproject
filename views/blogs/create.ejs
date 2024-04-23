@@ -1,17 +1,17 @@
 <!doctype html>
 <html lang="en">
-<%- include('../partials/header.ejs') %>
+<%- include('./../partials/header.ejs') %>
 <body>
 
     <header>
         <h1>Node Tutorial</h1>
-        <%- include('../partials/nav.ejs') %>
+        <%- include('./../partials/nav.ejs') %>
     </header>
 
     <section>
         <h2>Create Blog</h2>
         <div>
-            <form action="">
+            <form action="/blogs/create" method="POST">
                 <div>
                     <label for="title">Blog Title</label>
                     <input type="text" id="title" name="title">

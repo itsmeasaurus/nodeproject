@@ -6,6 +6,7 @@ router.get('/', (req,res)=> {
     // res.sendFile('./views/index.html',{root:__dirname});
 
     Blog.find()
+        .sort({createdAt: 'asc'})
         .then((result) => {
             res.render('index', {
                 title: 'Home Page',

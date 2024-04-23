@@ -5,7 +5,9 @@ require('dotenv').config()
 const indexRoute =  require('./routes/indexRoute')
 const aboutRoute =  require('./routes/aboutRoute')
 const contactRoute =  require('./routes/contactRoute')
-const blogCreateRoute =  require('./routes/blogs/createRoute')
+const blogViewRoute =  require('./routes/blogs/viewRoute')
+const blogCreateRouteGet =  require('./routes/blogs/createRouteGet')
+const blogCreateRoutePost =  require('./routes/blogs/createRoutePost')
 
 const app = express()
 const dbURI = process.env.DB_URI
@@ -23,12 +25,16 @@ mongoose.connect(dbURI)
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
+app.use(express.urlencoded({extended: true}))
 app.use(morgan('dev'))
 
 app.use('/',indexRoute)
 app.use('/about',aboutRoute)
 app.use('/contact',contactRoute)
-app.use('/blogs/create',blogCreateRoute)
+
+app.use('/blogs',blogViewRoute)
+app.use('/blogs/create',blogCreateRouteGet)
+app.use('/blogs/create',blogCreateRoutePost)
 
 app.use((req,res)=>{
     // res.status(404).sendFile('./views/404.html',{root:__dirname});
