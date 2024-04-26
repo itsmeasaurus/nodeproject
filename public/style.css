@@ -52,6 +52,11 @@ nav ul li a:hover {
     color: #ffc107;
 }
 
+a {
+    text-decoration: none;
+    color: #999;
+}
+
 section {
     padding: 20px;
 }
@@ -165,5 +170,76 @@ form button[type="submit"] {
 
 form button[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+.blog-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff; /* White background color */
+    border-radius: 10px;
+    overflow: hidden; /* Ensure rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+}
+
+.blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.blog-title {
+    font-size: 24px;
+    color: #333333; /* Dark gray text color */
+    margin: 0;
+}
+
+.blog-badge {
+    padding: 5px 10px;
+    background-color: #4caf50; /* Green badge color */
+    color: #ffffff; /* White text color */
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.blog-description {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.quote-icon {
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.blog-description p {
+    margin-left: 20px;
+}
+
+.blog-body {
+    margin-bottom: 40px;
+}
+
+.blog-body p {
+    margin-bottom: 15px;
+}
+
+.delete-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #e74c3c; /* Red background color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c0392b; /* Darker red background color on hover */
 }
 

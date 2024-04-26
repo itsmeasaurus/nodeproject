@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<%- include('./../partials/header.ejs') %>
+<body>
+    <header>
+        <h1>Blog Maker</h1>
+        <%- include('./../partials/nav.ejs') %>
+    </header>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title"><%= blog.title %></h1>
+            <div class="blog-badge"><%= blog.createdAt %></div>
+        </div>
+        <div class="blog-description">
+            <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M6 20h5.586L18 14.586V3h-5.586L6 8.414z"/><path fill="none" d="M0 0h24v24H0z"/></svg>
+            <p><%= blog.description %></p>
+        </div>
+        <div class="blog-body">
+            <%= blog.body %>
+        </div>
+        <button class="delete-button" data-id="<%= blog._id %>">Delete</button>
+    </div>
+
+    <script>
+        const deleteBtn = document.querySelector('.delete-button')
+
+        deleteBtn.addEventListener('click', e => {
+            const endPoint = `/blogs/${deleteBtn.dataset.id}`
+            fetch(endPoint, {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => window.location = data.redirect)
+            .catch(err => console.log(err))
+        })
+    </script>
+</body>
+</html>
