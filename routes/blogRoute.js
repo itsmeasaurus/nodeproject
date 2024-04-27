@@ -38,18 +38,29 @@ router.post('/create', (req,res) => {
 })
 
 router.get('/:id', (req,res) => {
-    console.log(req.params.id)
     Blog.findById(req.params.id)
         .then(result => {
-            console.log(result)
             res.render('blogs/detail', { blog: result })
         })
         .catch((err) => { console.log(err) })
 })
 
 router.delete('/:id', (req,res) => {
+
     Blog.findByIdAndDelete(req.params.id)
         .then(result => { res.json({ redirect: '/blogs' })})
+        .catch((err) => { console.log(err) })
+})
+
+router.put('/:id', (req,res) => {
+
+    const updatedData = req.body
+
+    Blog.findByIdAndUpdate(req.params.id, updatedData, { new: true} )
+        .then(result => {
+            Blog.findById(req.params.id).then(result => console.log(result))
+            res.json({ redirect: '/blogs'})
+        })
         .catch((err) => { console.log(err) })
 })
 
